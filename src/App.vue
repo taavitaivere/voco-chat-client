@@ -1,31 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
-  <Login></Login>
-  <SendMessage></SendMessage>
+
+  <h2>{{ _NAME }}</h2><br>
+  <login v-if="_STATE == 0"/><br>
+  <chatbox v-if="_STATE == 1"/><br>
+  <send v-if="_STATE == 1"/><br>
 </template>
-
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import Login from "@/components/Login";
-import SendMessage from "@/components/SendMessage";
-export default {
-  name: "App",
-  components: {
-    SendMessage,
-    Login,
-    HelloWorld,
-  },
-};
-</script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+import login from '@/components/login.vue'
+import chatbox from '@/components/chatbox.vue'
+import send from '@/components/send.vue'
+
+import { mapGetters } from 'vuex'
+
+export default {
+  name: 'app',
+  components: {
+    login,
+    chatbox,
+    send
+  },
+  computed: {
+    ...mapGetters({
+      _STATE: '_STATE',
+      _NAME: '_NAME'
+    })
+  }
 }
-</style>
+</script>
