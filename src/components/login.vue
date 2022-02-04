@@ -44,7 +44,7 @@ export default {
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  background-color: #ea526f;
+  background-color: #7e0014;
 
   &.login {
     align-items: center;
@@ -56,13 +56,13 @@ export default {
 
       .form-inner {
         display: block;
-        background-color: #FFF;
+        background-color: #000000;
         padding: 50px 15px;
         border-radius: 16px;
         box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 
         h1 {
-          color: #AAA;
+          color: #ffffff;
           font-size: 28px;
           margin-bottom: 30px;
         }
@@ -70,7 +70,7 @@ export default {
         label {
           display: block;
           margin-bottom: 5px;
-          color: #AAA;
+          color: #d3d3d3;
           font-size: 16px;
           transition: 0.4s;
         }
@@ -89,7 +89,7 @@ export default {
           color: #333;
           font-size: 18px;
           box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-          background-color: #F3F3F3;
+          background-color: #ffffff;
           transition: 0.4s;
 
           &::placeholder {
@@ -106,16 +106,16 @@ export default {
           display: block;
           width: 100%;
           padding: 10px 15px;
-          background-color: #ea526f;
+          background-color: #0129ff;
           border-radius: 8px;
-          color: #FFF;
+          color: #ffffff;
           font-size: 18px;
           font-weight: 700;
         }
 
         &:focus-within {
           label {
-            color: #ea526f;
+            color: #7e0014;
           }
 
           input[type="text"] {

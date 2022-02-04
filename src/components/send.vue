@@ -1,10 +1,10 @@
 <template>
-  <footer>
+  <div class="view send">
 
-  <input type="text" v-model="message"/><br>
+  <input type="text" v-model="message"/>
   <input type="submit" @click="setMessage();"/>
 
-  </footer>
+  </div>
 </template>
 
 <script>
@@ -32,10 +32,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-footer {
+.view {
+  border-radius: 0px 0px 24px 24px;
   position: sticky;
   bottom: 0px;
-  background-color: #FFF;
+  background-color: #807e7e;
   padding: 30px;
   box-shadow: 0px 0px 12px rgba(100, 100, 100, 0.2);
   form {
@@ -50,6 +51,7 @@ footer {
       width: 100%;
       padding: 10px 15px;
       border-radius: 8px 0px 0px 8px;
+      color: #ffffff;
 
       color: #333;
       font-size: 18px;
