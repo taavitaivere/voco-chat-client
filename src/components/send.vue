@@ -1,15 +1,24 @@
 <template>
-  <div class="view send">
-
-  <input type="text" v-model="message"/>
-  <input type="submit" @click="setMessage();"/>
-
+  <div class="card" style="border-radius: 0rem 0rem 1rem 1rem;">
+    <div class="card-body" style="padding: 0px;">
+      <div class="row">
+        <div class="col-2" style="border-right:1px solid black; padding: 15px; text-align: center;">
+          {{ _NAME }}
+        </div>
+        <div class="col-10" style="padding: 15px;">
+          <input type="text" v-model="message"/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: right; padding-top: 10px;">
+    <button type="button" class="btn btn-outline-light" style="padding-right: 2em; padding-left: 2em;" @click="setMessage();">Send</button>
   </div>
 </template>
 
 <script>
 
-import { mapMutations } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 
 export default {
   name: "send",
@@ -27,57 +36,12 @@ export default {
       console.log(this.message)
       this.$store.commit('setMessage', this.message)
     }
+  },
+
+  computed: {
+    ...mapGetters([
+      '_NAME'
+    ])
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.view {
-  border-radius: 0px 0px 24px 24px;
-  position: sticky;
-  bottom: 0px;
-  background-color: #807e7e;
-  padding: 30px;
-  box-shadow: 0px 0px 12px rgba(100, 100, 100, 0.2);
-  form {
-    display: flex;
-    input[type="text"] {
-      flex: 1 1 100%;
-      appearance: none;
-      border: none;
-      outline: none;
-      background: none;
-      display: block;
-      width: 100%;
-      padding: 10px 15px;
-      border-radius: 8px 0px 0px 8px;
-      color: #ffffff;
-
-      color: #333;
-      font-size: 18px;
-      box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-      background-color: #F3F3F3;
-      transition: 0.4s;
-      &::placeholder {
-        color: #888;
-        transition: 0.4s;
-      }
-    }
-
-    input[type="submit"] {
-      appearance: none;
-      border: none;
-      outline: none;
-      background: none;
-      display: block;
-      padding: 10px 15px;
-      border-radius: 0px 8px 8px 0px;
-      background-color: #ea526f;
-      color: #FFF;
-      font-size: 18px;
-      font-weight: 700;
-    }
-  }
-}
-
-</style>

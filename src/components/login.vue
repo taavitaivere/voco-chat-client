@@ -1,14 +1,24 @@
 <template>
-  <div class="view login">
-    <form class="login-form">
-      <div class="form-inner">
-        <h1>Login to VOCO Chat</h1>
-        <label>Username</label>
-        <input type="text" v-model="name"/>
-        <input type="submit" @click="formName();"/>
-        Nimi: {{ name }}
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+              <h2 class="fw-bold mb-2 text-uppercase">Login as {{ name }}</h2>
+
+              <div class="form-outline form-white mb-4">
+                <input type="text" id="typeName" v-model="name" class="form-control form-control-lg" />
+              </div>
+              <button class="btn btn-outline-light btn-lg px-5" type="submit" @click="formName();">Login</button>
+
+            </div>
+          </div>
+        </div>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -40,95 +50,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.view {
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: #7e0014;
-
-  &.login {
-    align-items: center;
-
-    .login-form {
-      display: block;
-      width: 100%;
-      padding: 15px;
-
-      .form-inner {
-        display: block;
-        background-color: #000000;
-        padding: 50px 15px;
-        border-radius: 16px;
-        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-
-        h1 {
-          color: #ffffff;
-          font-size: 28px;
-          margin-bottom: 30px;
-        }
-
-        label {
-          display: block;
-          margin-bottom: 5px;
-          color: #d3d3d3;
-          font-size: 16px;
-          transition: 0.4s;
-        }
-
-        input[type="text"] {
-          appearance: none;
-          border: none;
-          outline: none;
-          background: none;
-          display: block;
-          width: 100%;
-          padding: 10px 15px;
-          border-radius: 8px;
-          margin-bottom: 15px;
-
-          color: #333;
-          font-size: 18px;
-          box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-          background-color: #ffffff;
-          transition: 0.4s;
-
-          &::placeholder {
-            color: #888;
-            transition: 0.4s;
-          }
-        }
-
-        input[type="submit"] {
-          appearance: none;
-          border: none;
-          outline: none;
-          background: none;
-          display: block;
-          width: 100%;
-          padding: 10px 15px;
-          background-color: #0129ff;
-          border-radius: 8px;
-          color: #ffffff;
-          font-size: 18px;
-          font-weight: 700;
-        }
-
-        &:focus-within {
-          label {
-            color: #7e0014;
-          }
-
-          input[type="text"] {
-            background-color: #FFF;
-            box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-
-            &::placeholder {
-              color: #666;
-            }
-          }
-        }
-      }
-    }
-  }
-}
 </style>
