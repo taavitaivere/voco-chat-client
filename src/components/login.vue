@@ -10,8 +10,8 @@
               <div class="form-outline form-white mb-4">
                 <input
                   type="text"
-                  id="typeName"
-                  v-model="name"
+                  id="setName"
+                  v-model="v$.name.$model"
                   class="form-control form-control-lg"
                 />
               </div>
@@ -32,15 +32,29 @@
 
 <script>
 import { mapMutations } from "vuex";
+import { ref, computed } from "vue";
+import { useVuelidate } from "@vuelidate/core";
+import { required, minLength, maxLength } from "@vuelidate/validators";
 
 export default {
   name: "login",
+  setup() {
+    return {
+      v$: useVuelidate(),
+    };
+  },
   data() {
     return {
       name: null,
     };
   },
+  validations() {
+    return {
+      name: { required, minLength: minLength(3), maxLength: maxLength(30) },
+    };
+  },
   methods: {
+    // eslint-disable-next-line prettier/prettier
     ...mapMutations([
       "setName",
       "setState"

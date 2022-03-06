@@ -3,10 +3,11 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-8 col-xl-8">
         <div
-          class="card bg-dark overflow-auto"
-          style="border-radius: 1rem 1rem 0px 0px; height: 400px">
+          class="chatbox card bg-dark overflow-auto"
+          style="border-radius: 1rem 1rem 0px 0px; max-height: 400px"
+        >
           <div class="card-body p-3 text-center">
-            <div class="mb-md-5 mt-md-4 pb-5 text-white">
+            <div class="text-white">
               <div
                 class="card m-2"
                 v-for="m in _MESSAGE"
@@ -28,7 +29,7 @@
                         class="col-12"
                         style="font-size: 11px; color: gray; text-align: right"
                       >
-                        {{ m.name }}
+                        {{ m.username }} | {{ m.created }}
                       </div>
                     </div>
                   </div>
@@ -44,23 +45,37 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+// mapMutationi vaja ei ole sest on vaja vaadata ainult state ja teha API call, milleks on vaja mappida action vuex-s
+import { mapGetters, mapActions } from "vuex";
 import send from "@/components/send.vue";
 
 export default {
   name: "chatbox",
+  data() {
+    return {
+      allMessages: null,
+    };
+  },
   components: {
     send,
   },
-
+  methods: {
+    ...mapActions(["getMessages"]),
+  },
   computed: {
     ...mapGetters({
       _MESSAGE: "_MESSAGE",
     }),
   },
+  // kui componentides kasutada commit/dispatchi, siis tuleb kasutada this.$store.dispatch/commit('funktsiooni-nimi', data/payload)
+  mounted() {
+    this.$store.dispatch("getMessages");
+
+    window.setInterval(() => {
+      this.$store.dispatch("getMessages");
+    }, 1000);
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

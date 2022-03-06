@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "send",
@@ -39,20 +39,18 @@ export default {
     };
   },
   methods: {
-    ...mapMutations([
-      "setMessage"
-    ]),
+    ...mapActions(["sendMessage"]),
 
     setMessage: function () {
-      console.log(this.message);
-      this.$store.commit("setMessage", this.message);
+      this.$store.dispatch("sendMessage", {
+        username: this._NAME,
+        message: this.message,
+      });
     },
   },
 
   computed: {
-    ...mapGetters([
-      "_NAME"
-    ])
+    ...mapGetters(["_NAME"]),
   },
 };
 </script>

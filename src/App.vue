@@ -7,7 +7,7 @@
 <script>
 import login from "@/components/login.vue";
 import chatbox from "@/components/chatbox.vue";
-
+// mapGetter, et ligipääseda store/index.js getter funktsioonidele
 import { mapGetters } from "vuex";
 
 export default {
